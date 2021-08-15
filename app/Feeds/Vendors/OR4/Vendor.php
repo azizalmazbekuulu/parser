@@ -7,6 +7,8 @@ use App\Feeds\Processor\HttpProcessor;
 
 class Vendor extends HttpProcessor
 {
+    protected const DELAY_S = 0.1;
+
     public array $first = ['https://organicsmanufacturer.com/21-4organics-supplements'];
 
     public const CATEGORY_LINK_CSS_SELECTORS = [];

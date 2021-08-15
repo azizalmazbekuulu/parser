@@ -49,6 +49,7 @@ class Parser extends HtmlParser
     public function getMinimumPrice(): ?float
     {
         $value = $this->getAttr('tr#quantityDiscount_0:last-child', 'data-real-discount-value');
-        return floatval( preg_replace("/[^0-9.]/", '', $value) );
+        $value = floatval( preg_replace("/[^0-9.]/", '', $value) );
+        return $value > 0 ? $value : null;
     }
 }
