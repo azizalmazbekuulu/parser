@@ -11,7 +11,6 @@ class Vendor extends HttpProcessor
 
     public array $first = ['https://organicsmanufacturer.com/21-4organics-supplements'];
 
-    public const CATEGORY_LINK_CSS_SELECTORS = [];
     public const PRODUCT_LINK_CSS_SELECTORS = ['div.product-container a.product-name'];
 
     public function isValidFeedItem(FeedItem $fi) : bool

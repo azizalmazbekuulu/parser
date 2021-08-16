@@ -11,11 +11,6 @@ class Parser extends HtmlParser
         return $this->getText('span[itemprop="sku"]');
     }
 
-    public function getProductCode(): string
-    {
-        return 'OR4-' . $this->getText('span[itemprop="sku"]');
-    }
-
     public function getProduct(): string
     {
         return $this->getText('h1[itemprop="name"]');
@@ -44,12 +39,5 @@ class Parser extends HtmlParser
     public function getAvail(): ?int
     {
         return $this->getText('#availability_value') === "Available" || $this->getText('#availability_value') === "In Stock" ? self::DEFAULT_AVAIL_NUMBER : 0;
-    }
-
-    public function getMinimumPrice(): ?float
-    {
-        $value = $this->getAttr('tr#quantityDiscount_0:last-child', 'data-real-discount-value');
-        $value = floatval( preg_replace("/[^0-9.]/", '', $value) );
-        return $value > 0 ? $value : null;
     }
 }
