@@ -40,21 +40,4 @@ class Parser extends HtmlParser
     {
         return $this->getText('#availability_value') === "Available" || $this->getText('#availability_value') === "In Stock" ? self::DEFAULT_AVAIL_NUMBER : 0;
     }
-
-    public function getOptions(): array
-    {
-        $options = [];
-        $quantity = $this->getAttrs('tr#quantityDiscount_0', 'data-discount-quantity');
-        $price = $this->getAttrs('tr#quantityDiscount_0', 'data-real-discount-value');
-        if (count($quantity)) {
-            $temp = [];
-            foreach ($price as $p) {
-                $temp[array_shift($quantity)] = $p;
-            }
-            $options = [
-                $this->getText('.discount-product-heading') => $temp
-            ];
-        }
-        return $options;
-    }
 }
