@@ -23,7 +23,7 @@ class Parser extends HtmlParser
 
     public function getDescription(): string
     {
-        return $this->getHtml('#ptab-info div.rte');
+        return str_replace('</h2>', "</h2>\n", preg_replace('/<\/h\d/', '</h2', $this->getHtml('#ptab-info div.rte') ) );
     }
 
     public function getImages(): array
